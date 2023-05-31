@@ -42,16 +42,4 @@
        		]]>
 	</select>
 	
-	<!-- list -->
-	<select id="selsctUserByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
-		<![CDATA[
-		select no,
-        		id,
-        		password,
-        		name,
-        		gender
-        from users
-        where no=#{no}
-       		]]>
-	</select>
 </mapper>

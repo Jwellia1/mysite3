@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;//UserService로 부터 받은 최종 데이터를 넘겨받기 위해 매핑
 	
-	@RequestMapping(value="/user/list", method= {RequestMethod.GET, RequestMethod.POST})
-	public void list(HttpSession session) {
-		System.out.println("UserService.list()");
-		
-		
-	}
-	
-	
 	/*회원정보 수정폼*/
 	@RequestMapping(value="/user/modifyForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modifyForm(HttpSession session, Model model) {
@@ -39,7 +33,7 @@ public class UserController {
 		UserVo userVo=userService.modifyForm(no);
 		model.addAttribute("userVo", userVo);
 		
-		return "/WEB-INF/views/user/modifyForm.jsp";
+		return "user/modifyForm";
 	}
 
 
@@ -48,7 +42,8 @@ public class UserController {
 	@RequestMapping(value="/user/loginForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String loginForm() {
 		System.out.println("UserController.loginForm()");
-		return "/WEB-INF/views/user/loginForm.jsp";//view로 리턴하는 단계
+		
+		return "user/loginForm";//view로 리턴하는 단계
 	}
 	
 	
@@ -69,7 +64,7 @@ public class UserController {
 			return "redirect:/main";
 		}else {
 			System.out.println("로그인 실패");
-			return "/WEB-INF/views/user/loginForm?result=fail";
+			return "user/loginForm?result=fail";
 		}
 		
 		
@@ -82,7 +77,7 @@ public class UserController {
 		System.out.println(userVo);
 		int count = userService.join(userVo);
 		if(count>0) {
-			return "/WEB-INF/views/user/joinOk.jsp";
+			return "user/joinOk";
 		}else {
 			return "redirect:/user/joinForm";
 		}
@@ -94,7 +89,7 @@ public class UserController {
 	public String joinForm() {
 		System.out.println("UserController.joinForm()");
 		
-		return "WEB-INF/views/user/joinForm.jsp";
+		return "user/joinForm";
 		
 	}
 	/*로그아웃*/

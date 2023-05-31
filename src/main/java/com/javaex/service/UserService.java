@@ -1,5 +1,7 @@
 package com.javaex.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,7 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;//sqlSession을 거처 받은 Dao데이터를 넘겨받아야 하기 때문에 Dao를 매핑
 	
-	public void list(UserVo userVo) {
-		System.out.println("UserService.list()");
-	}
+	
 	
 	/*회원등록*/
 	public int join(UserVo userVo) {
@@ -39,8 +39,8 @@ public class UserService {
 	public UserVo modifyForm(int no) {
 		System.out.println("UserService.modifyForm()");
 		
-		UserVo userVo=userDao.selectUser(no);
-		return userVo;
+		UserVo authUser=userDao.selectUser(no);
+		return authUser;
 		
 	
 	}

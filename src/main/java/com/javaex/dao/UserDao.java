@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,9 +14,6 @@ public class UserDao {//src/main/resources/mybatis/configuration.xml의 mappers/
 	@Autowired
 	private SqlSession sqlSession;//DB 사이에 Mybatis를 통한 sqlSession으로 부터 필요한 Session을 불러와야 하기 때문
 	
-	List<UserVo> getUserList(){
-		
-	}
 	
 	/* 로그인 세션저장용 회원정보 가져오기 */
 	public UserVo selectUser(UserVo userVo) {
@@ -44,9 +43,9 @@ public class UserDao {//src/main/resources/mybatis/configuration.xml의 mappers/
 		System.out.println("UserService.modifyForm()");
 		System.out.println(no);
 		
-		UserVo userVo = sqlSession.selectOne("user.selectUserByNo", no);
+		UserVo authUser = sqlSession.selectOne("user.selsctUserByNo", no);
 		
-		return userVo;
+		return authUser;
 	}
 	
 
