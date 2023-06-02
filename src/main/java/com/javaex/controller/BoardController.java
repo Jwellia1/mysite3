@@ -18,6 +18,15 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@RequestMapping(value="/board/read", method= {RequestMethod.GET, RequestMethod.POST})
+	public String read(@RequestParam(value="no", required = false, defaultValue = "")String title, Model model) {
+		System.out.println("BoardController.read()");
+		System.out.println(title);
+		BoardVo authVo=boardService.getRead(title);
+		
+		return "board/read";
+	}
+	
 	@RequestMapping(value="/board/list2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list2(@RequestParam(value="keyword", required = false, defaultValue = "") String keyword , Model model) {
 		System.out.println("BoardController.list2()");

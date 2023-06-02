@@ -14,6 +14,16 @@ public class BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	
+	public BoardVo getRead(String title) {
+		System.out.println("BoardService.getRead()");
+		System.out.println(title);
+		
+		BoardVo authVo=boardDao.selectRead(title);
+		System.out.println(authVo);
+		
+		return authVo;
+	}
+	
 	public List<BoardVo> getList2(String keyword) {
 		System.out.println("BoardService.getList2()");
 		System.out.println(keyword);

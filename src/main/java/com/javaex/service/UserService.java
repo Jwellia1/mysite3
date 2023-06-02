@@ -1,7 +1,5 @@
 package com.javaex.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +41,16 @@ public class UserService {
 		return authUser;
 		
 	
+	}
+	//id check
+	public UserVo idcheck(String id) {
+		System.out.println("UserService.idcheck()");
+		System.out.println(id);
+		UserVo userVo=userDao.selectUser(id);
+		
+		return userVo;
+		
+		
 	}
 	
 	

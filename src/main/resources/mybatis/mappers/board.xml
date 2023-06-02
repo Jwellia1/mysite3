@@ -3,6 +3,14 @@
 
 <mapper namespace="board">
 
+	<update id="hitCountJH" parameterType="int">
+		<![CDATA[
+					update board
+					set hit=hit+1
+					where no=#{no}
+				]]>
+	</update>
+
 
 	<select id="selectList" resultType="com.javaex.vo.BoardVo">
 		<![CDATA[
@@ -40,6 +48,25 @@
 			order by reg_date desc
 		]]>
 
+	</select>
+
+	<select id="selectRead" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+	    SELECT  BO.no,
+        		BO.title,
+        		BO.content,
+        		US.name,
+       			BO.hit,
+        		TO_CHAR(BO.reg_date, 'YYYY-MM-DD HH:MI') regDate,
+        		US.no userNo
+		FROM board BO, users US
+		WHERE  BO.user_no = US.no
+		order by reg_date desc
+		]]>
+		<if test="value != '' ">
+
+			and Bo.title like '%' || #{title} ||'%'
+		</if>
 	</select>
 
 </mapper>

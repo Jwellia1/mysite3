@@ -47,6 +47,16 @@ public class UserDao {//src/main/resources/mybatis/configuration.xml의 mappers/
 		
 		return authUser;
 	}
+	//id check 
+	public UserVo selectUser(String id) {
+		System.out.println("UserDao.selectUser()");
+		System.out.println(id);
+		
+		UserVo userVo=sqlSession.selectOne("selectUserById", id);
+		
+		return userVo;
+		
+	}
 	
 
 }

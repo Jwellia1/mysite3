@@ -14,6 +14,24 @@ public class BoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public int hitCountJH(int no) {
+		System.out.println("BoardDao.hitCountJH()");
+		System.out.println(no);
+		
+		sqlSession.update("BoardDao.hitCountJH", no);
+		return no;
+		
+	}
+	
+	public BoardVo selectRead(String title) {
+		System.out.println("BoardDao.read()");
+		System.out.println(title);
+		
+		BoardVo authVo=sqlSession.selectOne("board.selectRead", title);
+		
+		return authVo;
+	}
+	
 	public List<BoardVo> selectList2(String keyword){
 		System.out.println("BoardDao.selectList2()");
 		System.out.println(keyword);

@@ -9,6 +9,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+
 </head>
 
 <body>
@@ -61,7 +63,8 @@
 						<div class="form-group">
 							<label class="form-text" for="input-uid">아이디</label> 
 							<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-							<button type="button" id="">중복체크</button>
+							<button type="button" id="btnIdCheck">중복체크</button>
+							<p id="idcheckMsg"> ㅁㅁㅁ</p>
 						</div>
 
 						<!-- 비밀번호 -->
@@ -114,10 +117,63 @@
 			Copyright ⓒ 2020 황일영. All right reserved
 		</div>
 		<!-- //footer -->
+		
+		
 
 	</div>
 	<!-- //wrap -->
 
 </body>
+	<script type="text/javascript">
+	//id check 버튼을 클릭했을 떄
+	$("#btnIdCheck").on("click",function(){
+		console.log("클릭");
+		
+		//아이디 추출
+		var id = $("[name=id]").val();
+		console.log(id);
+		//통신 id
+		$.ajax({})
+		
+		
+		$.ajax({
 
+				url : "${pageContext.request.contextPath }/user/idcheck?id="+id,//주소 요청
+				type : "post",
+				//contentType : "application/json",
+				//data : {id : id},
+
+				dataType : "json",
+				success : function(result) {
+					/*성공시 처리해야될 코드 작성*/
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+			//응답
+
+			//사용불가능
+			var result = {
+				no : 1,
+				name : "길동이",
+				id : "aaa",
+				password : "1256",
+				gender : "male"
+
+			};
+
+			var userVo = null;
+
+			if (userVo == null) {
+				//사용가능
+				$("#idcheckMsg").html("사용가능");
+			} else {
+				//불가
+				$("#idcheckMsg").html("사용불가");
+			}
+			;
+
+		});
+	</script>
 </html>
