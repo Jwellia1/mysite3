@@ -190,7 +190,7 @@ $("#btnDel").on("click", function(){
 		type : "post",
 		data : guestVo,
 		dataType : "json",
-		success : function(JsonResult){
+		success : function(jsonResult){
 			console.log(jsonResult);
 			/*성공시 처리해야될 코드 작성*/
 			if(jsonResult.data>0){
@@ -240,11 +240,11 @@ $("#btnSubmit").on("click",function() {
 	var password = $("[name='password']").val();
 	var content = $("[name='content']").val();
 
-	var guestbookVo = {
+	var guestbookVo = {//data수집
 		name : name,
 		password : password,
 		content : content
-	};
+	};// --> 컨버트
 
 	//ajax 통신 -> 요청은 같은 기술 응답이 데이터만 온다.
 
