@@ -43,12 +43,21 @@ public class UserService {
 	
 	}
 	//id check
-	public UserVo idcheck(String id) {
+	public boolean idcheck(String id) {
 		System.out.println("UserService.idcheck()");
 		System.out.println(id);
 		UserVo userVo=userDao.selectUser(id);
 		
-		return userVo;
+		
+		boolean result;
+		if(userVo == null) {
+			result=true;
+		}else {
+			result=false;
+		}
+		
+		
+		return result;
 		
 		
 	}

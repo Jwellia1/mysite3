@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
+import com.javaex.vo.JsonResult;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -106,12 +107,28 @@ public class UserController {
 	//회원가입 id체크
 	@ResponseBody
 	@RequestMapping(value="/user/idcheck", method= {RequestMethod.GET, RequestMethod.POST})
-	public UserVo idcheck(@RequestParam("id") String id) {
+	public JsonResult idcheck(@RequestParam("id") String id) {
 		System.out.println("UserService.idcheck()");
 		
-		UserVo userVo = userService.idcheck(id);
-		System.out.println(userVo);
-		return userVo;
+		boolean data=userService.idcheck(id);
+		
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(data);
+		
+		//jsonResult.fail("통신오류");
+		
+		/*
+		 * getter setter 사용시
+		jsonResult.setResult("success");
+		jsonResult.setData(data);
+		
+		jsonResult.setResult("fail");
+		jsonResult.getFailMsg("통신오류");
+		*/
+		System.out.println(jsonResult);
+		//UserVo userVo = userService.idcheck(id);
+		
+		return jsonResult;//글자만 반환하는 것(ajax방식)json으로 전송
 	}
 	
 

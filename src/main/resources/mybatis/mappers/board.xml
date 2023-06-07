@@ -65,7 +65,7 @@
 		]]>
 		<if test="value != '' ">
 
-			and Bo.title like '%' || #{title} ||'%'
+			and Bo.title like '%' || #{} ||'%'
 		</if>
 	</select>
 
