@@ -15,12 +15,17 @@ public class MyGuestbookService {
 	private GuestbookDao guestbookDao;
 
 	public int addGuestBook(GuestbookVo guestbookVo) {
+		
 		return guestbookDao.addGuestBook(guestbookVo);
 	}
 	//방명록 리스트 가져오기
 	public List<GuestbookVo> getAddList() {
+		System.out.println("MyGuestbookService.getAddList()");//addList에 실질적으로 데이터를 입력했을 때 출력된다.
 		return guestbookDao.getAddList();
 	}
+	
+	
+	
 	//방명록 삭제시
 	public int deleteGuestbook(GuestbookVo guestbookVo) {
 		return guestbookDao.deleteGuestbook(guestbookVo);

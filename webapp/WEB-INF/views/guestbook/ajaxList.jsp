@@ -138,10 +138,6 @@
 
 	<!-- 삭제폼 모달창 ----------------------------------------------------------------------->
 	
-
-
-	
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -162,40 +158,39 @@
   </div>
 </div>
 
-
-
-
 <!-- //삭제폼 모달창 ------------------------------------------------------------------------->
 </body>
 
 <script type="text/javascript">
 //모달창에 있는 삭제 버튼 클릭했을때 (진짜삭제)
-$("#btnDel").on("click", function(){
+$("#btnDel").on("click", function(){//btnDel이라는 속성에 button클릭 합수를 호출한 것
 	console.log("삭제버튼 클릭");
 	
 //서버에 데이타보내기  --->
     //데이타 모으기
-	var password = $("#modalPassword").val();
-	var no = $("#modalNo").val();
+	var password = $("#modalPassword").val();//$("#modalPassword")는 modalPassword라는 id를 가진 요소를 선택하는 코드, .val() 함수는 해당 요소의 값을 반환하는 역할
+	var no = $("#modalNo").val();//modalNo의 id를 가져와 해당 요소값을 반환 하여 no변수에 저장하는 코드
 	//객체로 만들기
 	var guestVo = {
 		password: password,
 		no: no
-	};
+	};//guestVo 객체는 password와 no 속성을 가지고 있고, 이전에 선언된 변수 password와 no의 값을 각각 가지게 된다.
 	
 	//요청
 	$.ajax({
 		
-		url : "${pageContext.request.contextPath }/api/guestbook/remove",		
-		type : "post",
-		data : guestVo,
-		dataType : "json",
-		success : function(jsonResult){
-			console.log(jsonResult);
+		url : "${pageContext.request.contextPath }/api/guestbook/remove",//사용자가 요청한 http 패이지의 주소url값 controller의 호출 url주소와 같아야 함.		
+		type : "post",//http호출 방식
+		data : guestVo,//guestVo객체 전송
+		dataType : "json",//json 서버의 응답 데이터 타입
+		success : function(jsonResult){//$.ajax() 함수의 옵션 중 하나인 success 콜백 함수를 정의 = 서버 요청이 성공적으로 완료되었을 때 호출
+			//(jsonResult)는 서버 응답response의 JSON 데이터를 나타내는 매개변수
+			//success 콜백 함수는 일반적으로 서버 응답을 처리, 
+			console.log(jsonResult);//jsonResult.data 값을 비교하여 조건에 따라 화면에서 요소를 제거하거나 경고창을 표시하는 등의 작업을 수행
 			/*성공시 처리해야될 코드 작성*/
 			if(jsonResult.data>0){
 				//화면에서 지우기
-				$("#t-"+guestVo.no).remove();
+				$("#t"+guestVo.no).remove();
 				$("#myModal").modal("hide");
 			}else{
 				alert("비밀번호가 틀렸습니다.")
@@ -266,7 +261,7 @@ $("#btnSubmit").on("click",function() {
 				render(jsonResult.data); //리스트에 추가
 				
 				//등록폼 비우기
-				$("[name='name']").val("");
+				$("[name='name']").val("");//.var()주로 form태그의 value값을 불러오거나 입력할때 사용
 				$("[name='password']").val("");
 				$("[name='content']").val("");
 				
@@ -306,6 +301,8 @@ function render(guestbookVo){
 	str += '</table>';
 	
 	$("#guestbookListArea").prepend(str);
+	//prepend 지정한 태그 내의 속성 앞에 html문자열을 추가
+	//append 지정한 태그 내의 속성 뒤에 html문자열을 추가
 }
 		
 		
