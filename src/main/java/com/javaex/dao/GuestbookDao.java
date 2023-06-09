@@ -31,18 +31,6 @@ public class GuestbookDao {
 
 	}
 
-	// 방멱록 등록시 사용
-	public int insertGuest(GuestbookVo guestbookVo) {
-		System.out.println("guestbookDao.insertGuest()");
-		System.out.println(guestbookVo);
-
-		int count = sqlSession.insert("guestbook.insertGuest", guestbookVo);// guestbook.xml로부터 namespace = guestbook .
-																			// id=insertGuest
-		System.out.println(guestbookVo);
-
-		return count;
-	}
-
 	// ajax 방명록 등록 후 no로 글 가져오기
 	public GuestbookVo selectGuest(int no) {
 		System.out.println("GuestbookDao.selectGuest()");
@@ -53,5 +41,15 @@ public class GuestbookDao {
 
 		return guestbookVo;
 	}
+	
+	//ajax 방명록  등록때 사용
+		public int insertSelectKey(GuestbookVo guestbookVo) {
+			System.out.println("GuestbookDao.insertSelectKey()");
+			
+			int count = sqlSession.insert("guestbook.insertSelectKey", guestbookVo);
+			
+			//셀렉트 문 17 번으로 글 가져오기
+			return count;
+		}
 
 }

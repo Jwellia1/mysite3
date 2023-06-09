@@ -19,9 +19,9 @@
 
 		<div id="nav">
 			<ul>
-				<li><a href="">방명록</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">게시판</a></li>
+				<li><a href="${pageContext.request.contextPath }/guestbook/addList">방명록</a></li>
+				<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/getlist">게시판</a></li>
 				<li><a href="">입사지원서</a></li>
 			</ul>
 			<div class="clear"></div>
@@ -40,7 +40,7 @@
 
 		<div id="content">
 
-			<div id="content-head">
+		<div id="content-head">
 				<h3>회원정보</h3>
 				<div id="location">
 					<ul>
@@ -49,37 +49,41 @@
 						<li class="last">회원정보</li>
 					</ul>
 				</div>
-				<div class="clear"></div>
-			</div>
+		<div class="clear"></div>
+		</div>
 			<!-- //content-head -->
 
 			<div id="user">
 				<div id="modifyForm">
-					<form action="" method="">
+					<form action="${pageContext.request.contextPath}/user/modifyForm.jsp" method="get">
 
 						<!-- 아이디 -->
 						<div class="form-group">
-							<label class="form-text" for="input-uid">아이디</label> <span
-								class="text-large bold">${requestScope.userVo.id}</span>
+							<label class="form-text" for="input-uid">아이디</label> 
+							<span class="text-large bold">${requestScope.userVo.id}</span>
+							
 						</div>
+						<br>
 
 						<!-- 비밀번호 -->
 						<div class="form-group">
-							<label class="form-text" for="input-pass">패스워드</label> <input
-								type="text" id="input-pass" name="" value="${requestScope.userVo.password}"
-								placeholder="비밀번호를 입력하세요">
+							<label class="form-text" for="input-pass">패스워드</label> 
+							<input type="text" id="input-pass" name="" value="${requestScope.userVo.password}" placeholder="비밀번호를 입력하세요">
+							
 						</div>
+						<br>
 
 						<!-- 이메일 -->
 						<div class="form-group">
-							<label class="form-text" for="input-name">이름</label> <input
-								type="text" id="input-name" name="" value="${requestScope.userVo.name}"
-								placeholder="이름을 입력하세요">
+							<label class="form-text" for="input-name">이름</label> 
+							<input type="text" id="input-name" name="" value="${requestScope.userVo.name}" placeholder="이름을 입력하세요">
+							
 						</div>
+						<br>
 
 						<!-- //나이 -->
 						<div class="form-group">
-							<span class="form-text">성별${requestScope.userVo.gender}</span> 
+							<span class="form-text">성별${requestScope.userVo.gender}
 							<c:if test="${requestScope.userVo.gender == 'male' }">
 
 								<label for="rdo-male">남</label>
@@ -89,6 +93,8 @@
 								<label for="rdo-female">여</label>
 								<input type="radio" id="rdo-female" name="gender" value="female">
 							</c:if>
+							</span> 
+							
 							<c:if test="${requestScope.userVo.gender == 'female' }">
 								<label for="rdo-male">남</label>
 								<input type="radio" id="rdo-male" name="gender" value="male">
@@ -99,6 +105,7 @@
 							</c:if>
 
 						</div>
+						<br>
 
 						<!-- 버튼영역 -->
 						<div class="button-area">

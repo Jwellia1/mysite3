@@ -43,17 +43,6 @@ public class GuestbookController {
 		return "guestbook/addList";
 	}
 
-	
-	// 방명록 글 저장
-	@RequestMapping(value = "/write", method = { RequestMethod.GET, RequestMethod.POST })
-	public String write(@ModelAttribute GuestbookVo guestbookVo) {
-		System.out.println("GuestbookController.write()");
-
-		myGuestbookService.addGuest(guestbookVo);
-		return "redirect:/guestbook/addList";
-	}
-	
-	
 	/* 방명록 삭제 폼 */
 	@RequestMapping(value = "/deleteForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleteform() {

@@ -30,9 +30,11 @@ public class GalleryController {
 		System.out.println("GalleryController.gList()");
 		System.out.println(file.getOriginalFilename());
 		
+		String saveName=galleryService.restore(file);
 		
+		model.addAttribute("savaName", saveName);
 		
-		return "";
+		return "gallery/list";
 	}
 	
 }

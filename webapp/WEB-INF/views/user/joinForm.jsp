@@ -58,23 +58,21 @@
 						<!-- 아이디 -->
 						<div class="form-group">
 							<label class="form-text" for="input-uid">아이디</label> 
-							<inpu type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요" autofocus required onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}">
+							<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요" autofocus required onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}">
 							<button type="button" id="btnIdCheck">중복체크</button>
 							<p id="idcheckMsg">ㅁㅁㅁ</p>
 						</div>
 
 						<!-- 비밀번호 -->
 						<div class="form-group">
-							<label class="form-text" for="input-pass">패스워드</label> <input
-								type="text" id="input-pass" name="password" value=""
-								placeholder="비밀번호를 입력하세요" required onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}">
+							<label class="form-text" for="input-pass">패스워드</label> 
+							<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요" required onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}">
 						</div>
 
 						<!-- 이메일 -->
 						<div class="form-group">
-							<label class="form-text" for="input-name">이름</label> <input
-								type="text" id="input-name" name="name" value=""
-								placeholder="이름을 입력하세요" required>
+							<label class="form-text" for="input-name">이름</label> 
+							<input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요" required>
 						</div>
 
 						<!-- //성별 -->
@@ -89,8 +87,7 @@
 
 						<!-- 약관동의 -->
 						<div class="form-group">
-							<span class="form-text">약관동의</span> <input type="checkbox"
-								id="chk-agree" value="" name="" required> <label for="chk-agree">서비스
+							<span class="form-text">약관동의</span> <input type="checkbox" id="chk-agree" value="" name="" required> <label for="chk-agree">서비스
 								약관에 동의합니다.</label>
 						</div>
 

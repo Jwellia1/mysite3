@@ -20,6 +20,8 @@
 
 		<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
 		<!-- //nav -->
+		
+	
 
 		<div id="aside">
 			<h2>방명록</h2>

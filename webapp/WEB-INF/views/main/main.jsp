@@ -19,9 +19,9 @@
 
 		<div id="nav">
 			<ul>
-				<li><a href="">방명록</a></li>
-				<li><a href="/mysite/gallery/list">갤러리</a></li>
-				<li><a href="">게시판</a></li>
+				<li><a href="${pageContext.request.contextPath }/guestbook/addList">방명록</a></li>
+				<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리</a></li>
+				<li><a href="${pageContext.request.contextPath }/board/list3">게시판</a></li>
 				<li><a href="">입사지원서</a></li>
 			</ul>
 			<div class="clear"></div>

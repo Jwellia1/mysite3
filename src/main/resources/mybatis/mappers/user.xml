@@ -4,7 +4,7 @@
 <mapper namespace="user">
 	
 	<!-- 회원가입 -->
-	<insert id="insert" parameterType="com.javaex.vo.UserVo">
+	<insert id="insert" parameterType="String" >
 		<![CDATA[
 			insert into users
 				values(seq_users_no.nextval,
@@ -18,7 +18,7 @@
 	
 	
 	<!-- login save for Session bring info  -->
-	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+	<select id="selectUser" parameterType="String" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
 		 select no,
         		name
